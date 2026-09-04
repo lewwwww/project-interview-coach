@@ -1,6 +1,7 @@
 ---
 name: project-interview-coach
 description: Learn any software project and prepare for interviews end to end. Use when the user wants verified run instructions, a plain-language business and technical walkthrough, guided layered project learning, resume generation from project evidence or resume-to-code mapping, skill-gap analysis with a study plan, a project interview battle card, concrete code or scenario questions, or an interactive mock interview. Works with local projects including code cloned from remote repositories. Do not use for an ordinary code change or generic interview questions unrelated to a project.
+allowed-tools: Read, Write, Edit, Glob, Grep, Bash, WebFetch, WebSearch
 ---
 
 # Project Interview Coach

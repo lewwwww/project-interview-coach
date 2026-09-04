@@ -1,6 +1,6 @@
 # Project Interview Coach（项目面试教练）
 
-一个面向 **Codex** 的通用软件项目学习 Skill：把任意代码仓库学懂、讲清，并一路带到面试现场。
+一个跨平台的通用软件项目学习 Skill（Codex / Claude Code / Doubao 等均可用）：把任意代码仓库学懂、讲清，并一路带到面试现场。
 
 **定位：通用软件项目学习。**
 
@@ -29,7 +29,11 @@
 
 ## 安装
 
-把这个仓库放到 Codex 的 skills 目录下（以 Windows 为例）：
+这个仓库本身就是完整的 Skill 目录，按你所用 agent 的约定把它放到对应 skills 根目录下即可。三平台均可：
+
+### Codex
+
+Windows（PowerShell）：
 
 ```powershell
 git clone https://github.com/lewwwww/project-interview-coach.git "$env:USERPROFILE\.codex\skills\project-interview-coach"
@@ -43,12 +47,46 @@ git clone https://github.com/lewwwww/project-interview-coach.git ~/.codex/skills
 
 装好后**新开一个 Codex 任务**才会生效。
 
+### Claude Code
+
+```bash
+git clone https://github.com/lewwwww/project-interview-coach.git ~/.claude/skills/project-interview-coach
+```
+
+Claude Code 通过 `SKILL.md` 的 `name` / `description` / `allowed-tools` 字段自动识别本 Skill。安装后新开会话即可被上下文感知触发。
+
+### Doubao（豆包）
+
+Windows（PowerShell）：
+
+```powershell
+git clone https://github.com/lewwwww/project-interview-coach.git "$env:LOCALAPPDATA\Doubao\User Data\Profile 1\.doubao\agent_mode\workspace\.skills\project-interview-coach"
+```
+
+macOS / Linux：
+
+```bash
+git clone https://github.com/lewwwww/project-interview-coach.git ~/Library/Application\ Support/Doubao/.../.doubao/agent_mode/workspace/.skills/project-interview-coach
+```
+
+> Doubao 的 skills 根目录以你当前 Profile 的实际路径为准，把仓库克隆到该目录下即可；装好后新开会话生效。
+
+### 其他遵循 SKILL.md 标准的 agent
+
+Cline、Gemini CLI、Roo Code 等同样读取 `SKILL.md` 的 frontmatter（`name` + `description`），把本仓库放到各自的 skills 目录即可，无需改文件。
+
 ## 用法
 
-在 Codex 中直接说：
+各平台触发方式：
+
+- **Codex：** 用 `$project-interview-coach` 前缀显式调用，或直接说下面这些自然语言指令（`agents/openai.yaml` 已开自动触发）。
+- **Claude Code：** 直接说自然语言指令，Skill 按描述上下文感知自动激活；也可在提示中显式点名 `project-interview-coach`。
+- **Doubao：** 直接说自然语言指令，按 Skill 描述自动匹配激活。
+
+通用自然语言示例：
 
 ```
-使用 $project-interview-coach 详细、通俗地分析当前项目，验证运行方式，并结合我的简历进行面试准备。
+使用 project-interview-coach 详细、通俗地分析当前项目，验证运行方式，并结合我的简历进行面试准备。
 ```
 
 或者更简单的一句：
@@ -69,9 +107,9 @@ git clone https://github.com/lewwwww/project-interview-coach.git ~/.codex/skills
 
 ```
 project-interview-coach/
-├── SKILL.md                          # Skill 主定义：模式选择、证据分级、分析方法
+├── SKILL.md                          # Skill 主定义：模式选择、证据分级、分析方法（跨平台核心）
 ├── agents/
-│   └── openai.yaml                   # Codex Agent 配置（显示名、自动触发）
+│   └── openai.yaml                   # Codex 专属 Agent 配置（显示名、自动触发）；其他平台自动忽略
 ├── references/
 │   ├── project-output.md             # 12 节项目学习笔记结构 + 面试作战卡
 │   ├── interview-method.md           # 简历证据映射 + 9 级提问阶梯 + 一问一答协议
@@ -97,7 +135,7 @@ project-interview-coach/
 - Skill 不会自动修改项目 README，除非你明确指定。
 - 简历与面试细节默认保存在外部作战卡目录，不会写入项目仓库。
 - 对于无法从代码证实的说法，会明确标注为待确认（`Unverified`），不会替你编造。
-- 修改本 Skill 后需**新开一个 Codex 任务**才会生效。
+- 修改本 Skill 后需**新开会话/任务**才会生效（各平台都在启动时读取 Skill 目录）。
 
 ## License
 

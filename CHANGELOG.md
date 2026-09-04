@@ -6,6 +6,7 @@
 
 ### Added
 
+- **跨平台兼容**：SKILL.md 增加 `allowed-tools` 字段（Claude Code 识别）；README 改为 Codex / Claude Code / Doubao 三平台安装与用法说明（`agents/openai.yaml` 标注为 Codex 专属，其他平台忽略）。
 - 新增 `references/resume-workflow.md`：简历工作流（有简历→fit 先行评估+优化；无简历→参考模板从项目证据生成）+ 简历验证清单。
 - 新增 `references/upskill.md`：技能差距分析（gap heatmap）→ 八股学习计划（资源 / 顺序 / 时间），衔接已有题库积累。
 - 新增 `references/interview-tips.md`：STAR 素材模板、常见难题、反向提问清单、roleplay 指南、电话/视频面试技巧。
