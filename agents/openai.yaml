@@ -1,7 +1,7 @@
 interface:
   display_name: "项目面试教练"
-  short_description: "结合真实代码与简历，详细通俗地讲解项目并开展递进式模拟面试"
-  default_prompt: "使用 $project-interview-coach 详细、通俗地分析当前项目，验证运行方式，并结合我的简历进行面试准备。"
+  short_description: "通用软件项目学习：通俗讲解代码、辅助或生成简历、八股差距分析与递进式模拟面试"
+  default_prompt: "使用 $project-interview-coach 学习当前项目：通俗讲解并验证运行方式；如有简历则结合简历准备，如无简历则参考模板生成；再做技能差距分析与模拟面试。"
 
 policy:
   allow_implicit_invocation: true

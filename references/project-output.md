@@ -62,7 +62,7 @@ Content requirements:
 1. **项目是什么:** users, pain point, main capabilities, inputs, outputs, boundaries, and a plain one-sentence explanation.
 2. **本地运行:** prerequisites, versions, dependencies, environment variables without secrets, exact commands, startup order, verification signal, common failure, and verified/inferred status.
 3. **核心请求:** initiating action, endpoint, validation, service calls, persistence or messaging, response, errors, and a path-and-symbol call chain.
-4. **整体架构:** layers or services, ownership boundaries, communication, data stores, external systems, deployment shape when evidenced, and why the structure fits the project.
+4. **整体架构:** layers or services, ownership boundaries, communication, data stores, external systems, deployment shape when evidenced, and why the structure fits the project. Present the architecture as clear layers (for example API/interface, service/domain, data/persistence, external integrations) with data flow between layers, so a reader can tour it in dependency order rather than reading the tree at random.
 5. **模块与入口:** responsibilities, important files and symbols, upstream/downstream relationships, and the recommended reading order.
 6. **框架与组件:** the problem each solves, how this project configures and calls it, what breaks without it, and relevant limitations.
 7. **选型原因:** evidenced intent or clearly marked inference, alternatives, advantages, costs, and the conditions under which another option would be preferable.

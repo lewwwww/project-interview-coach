@@ -1,59 +1,104 @@
-# Project Interview Coach
+# Project Interview Coach（项目面试教练）
 
-> 一个基于 Codex 的项目面试辅导 Skill，帮你把真实代码base吃透到能在面试里诚实、清晰地讲出来，并扛住追问。
+一个面向 **Codex** 的通用软件项目学习 Skill：把任意代码仓库学懂、讲清，并一路带到面试现场。
+
+**定位：通用软件项目学习。**
+
+- 有简历 → 辅助简历（对齐目标岗位，梳理可验证的项目亮点）
+- 无简历 → 参考简历模板，从项目已验证内容生成一份可用的简历
+- 完整链路：**项目学习 → 八股 → 模拟面试**
 
 ## 它能做什么
 
-针对你手里的真实项目，提供以下六种模式（可组合使用）：
+对任意本地代码仓库（自己写的、课程作业、远程拉下来的开源项目都行）：
 
-| 模式 | 说明 |
+| 环节 | 能力 |
 |---|---|
-| **项目讲解** | 从业务到技术，端到端用大白话讲清楚 |
-| **简历重点** | 结合你的简历，聚焦与简历强相关的部分 |
-| **模拟面试** | 一次问一个问题，根据你的回答动态追问 |
-| **场景题** | 基于项目出并发、故障、一致性、性能等场景题 |
-| **代码追问** | 引用具体文件、类、函数、调用路径来提问 |
-| **沉淀文档** | 把项目学习结论写成可复习的面试作战卡 |
+| 项目学习 | 通俗讲解业务与技术、验证运行方式、核心请求流转、分层架构、关键模块入口、选型与设计取舍 |
+| 简历 | 有简历：把简历条目映射到代码证据，标出支持/部分支持/未验证，诚实收窄；无简历：参考模板从项目证据生成简历 |
+| 八股 | 对照目标岗位 JD 或目标方向做技能差距分析，生成 gap heatmap + 学习计划（资源、顺序、时间） |
+| 模拟面试 | 一问一答的递进式模拟面试，9 级提问阶梯，答后给简短评估 + 参考回答 + 下一步 |
+| 沉淀 | 12 节项目学习笔记 + 三档（30 秒 / 1 分钟 STAR / 深挖）面试作战卡 |
 
-## 核心原则
+## 核心设计原则
 
-- **基于证据，不编造**：所有结论标注验证状态 —— `Verified`（实际运行验证）/ `Code-supported`（代码支持但未运行）/ `Inferred`（合理推断待确认）/ `Unverified`（简历声称但未证实）
-- **不虚构个人贡献、线上事故、性能数字、流量规模**
-- **区分当前实现与改进建议**
-- **简历里没有证据支撑的说法，会帮你诚实收窄，而不是硬吹**
+- **证据优先**：一切结论从仓库代码、配置、测试、运行结果而来，四级证据分级（Verified / Code-supported / Inferred / Unverified）。
+- **不编造**：不虚构个人职责、生产事故、性能数字、设计意图。简历里只放有证据支撑的内容。
+- **一问一答**：模拟面试一次只问一题，答后评估，不让候选人先看到完整答案。
+- **反 AI 味**：讲解和面试话术追求自然、具体、可被打断，不堆砌机械口癖和空洞套话。
 
-## 项目结构
+## 安装
+
+把这个仓库放到 Codex 的 skills 目录下（以 Windows 为例）：
+
+```powershell
+git clone https://github.com/lewwwww/project-interview-coach.git "$env:USERPROFILE\.codex\skills\project-interview-coach"
+```
+
+macOS / Linux：
+
+```bash
+git clone https://github.com/lewwwww/project-interview-coach.git ~/.codex/skills/project-interview-coach
+```
+
+装好后**新开一个 Codex 任务**才会生效。
+
+## 用法
+
+在 Codex 中直接说：
+
+```
+使用 $project-interview-coach 详细、通俗地分析当前项目，验证运行方式，并结合我的简历进行面试准备。
+```
+
+或者更简单的一句：
+
+```
+帮我学习这个项目并进行模拟面试。
+```
+
+常用指令示例：
+
+- `帮我学这个项目，输出一份项目学习笔记` —— 沉淀 12 节项目学习笔记
+- `我没有简历，帮我按这个项目生成一份简历` —— 走简历生成流程（参考模板）
+- `这是我的简历和一份 Java 后端 JD，帮我对齐评估` —— 走 fit 先行 + 简历优化流程
+- `针对这个岗位做技能差距分析，给我一份学习计划` —— 走八股 / upskill 流程
+- `开始模拟面试，从项目背景问起` —— 一问一答模拟面试
+
+## 目录结构
 
 ```
 project-interview-coach/
-├── SKILL.md              # Skill 主定义与使用规范
-├── agents/               # 配套 Agent 定义
-└── references/           # 参考文档
-    ├── project-output.md      # 完整项目学习笔记的 12 节结构
-    └── interview-method.md    # 简历映射、代码追问、场景题、模拟面试方法
+├── SKILL.md                          # Skill 主定义：模式选择、证据分级、分析方法
+├── agents/
+│   └── openai.yaml                   # Codex Agent 配置（显示名、自动触发）
+├── references/
+│   ├── project-output.md             # 12 节项目学习笔记结构 + 面试作战卡
+│   ├── interview-method.md           # 简历证据映射 + 9 级提问阶梯 + 一问一答协议
+│   ├── resume-workflow.md            # 简历生成 / 简历辅助工作流 + 验证清单
+│   ├── upskill.md                    # 技能差距分析 + 学习计划（八股）
+│   └── interview-tips.md             # STAR 素材、常见难题、反问、roleplay
+├── README.md
+├── CHANGELOG.md
+└── LICENSE
 ```
 
-## 怎么用
+## 借鉴与致谢
 
-这是一个 Codex Skill，将本仓库放置到 Codex 的 skills 目录下即可被识别加载。
+本 Skill 在自研方法论基础上，吸收了一批优秀开源项目的成熟设计，特此致谢：
 
-加载后，直接用自然语言描述需求，例如：
-
-- "帮我把这个项目从头到尾讲一遍"
-- "结合我的简历，看看哪些点能在面试里重点说"
-- "来一轮模拟面试，从项目背景开始问"
-- "针对这个项目出几道并发和故障场景题"
-- "把学习结论写成面试作战卡"
-
-## 适用场景
-
-- 校招/社招前面试准备，把做过的项目彻底吃透
-- 简历上的项目描述需要与真实代码对齐
-- 担心面试被追问到具体实现、设计选型、故障处理
-- 需要把项目理解沉淀成可反复复习的笔记
+- [MadsLorentzen/ai-job-search](https://github.com/MadsLorentzen/ai-job-search)（MIT）——候选人档案、fit 先行评估、简历验证清单、STAR / roleplay 面试准备、upskill 技能差距→学习计划
+- [Egonex-AI/Understand-Anything](https://github.com/Egonex-AI/Understand-Anything)（MIT）——入口点识别、分层架构分析、引导式学习（按依赖顺序 tour）
+- [0x68616F4C/real-interview](https://github.com/0x68616F4C/real-interview)（MIT）——评分复盘与反 AI 味硬规则
+- [f12336414-ship-it/project-interview-extractor](https://github.com/f12336414-ship-it/project-interview-extractor)（Apache-2.0）——项目专属题库银行思路
 
 ## 注意事项
 
-- Skill 不会自动修改项目 README，除非你明确指定
-- 简历细节默认保存在外部作战卡目录，不会写入仓库
-- 对于无法从代码中证实的说法，会明确标注为待确认，不会替你编造
+- Skill 不会自动修改项目 README，除非你明确指定。
+- 简历与面试细节默认保存在外部作战卡目录，不会写入项目仓库。
+- 对于无法从代码证实的说法，会明确标注为待确认（`Unverified`），不会替你编造。
+- 修改本 Skill 后需**新开一个 Codex 任务**才会生效。
+
+## License
+
+[MIT](LICENSE)
