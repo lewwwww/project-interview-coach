@@ -25,6 +25,10 @@ Infer the requested mode and combine modes when useful:
 
 If a resume path or target role is absent, continue with general project study and state that resume-specific conclusions are unavailable. If the user asks for interview practice or interview preparation material, also apply [references/interview-tips.md](references/interview-tips.md). Default to a development interview and adapt to the detected stack. For Java projects, emphasize Spring, persistence, transactions, Redis, messaging, microservices, concurrency, performance, and failure handling only when those technologies exist.
 
+## Project Location Preference
+
+When the user wants to study a remote project and has not specified a local path, clone it to `D:\learned\xiangmu\<repo-name>` by default. This is a local preference, not a portable requirement. On another machine where that directory does not exist, ask for the user's preferred project directory before cloning.
+
 ## Start Every New Project
 
 1. Read root documentation, repository instructions, manifests, dependencies, startup scripts, configuration, directory structure, tests, and key entrypoints.
