@@ -27,12 +27,12 @@ If a resume path or target role is absent, continue with general project study a
 
 ## Project Location Preference
 
-When the user wants to study a remote project and has not specified a local path, clone it to `D:\learned\xiangmu\<repo-name>` by default. This is a local preference, not a portable requirement. On another machine where that directory does not exist, ask for the user's preferred project directory before cloning.
+When the user wants to study a remote project and has not specified a local path, clone it to `D:\计算机项目学习\<repo-name>` by default. This is a local preference, not a portable requirement. On another machine where that directory does not exist, ask for the user's preferred project directory before cloning.
 
 ## Start Every New Project
 
 1. Read root documentation, repository instructions, manifests, dependencies, startup scripts, configuration, directory structure, tests, and key entrypoints.
-2. Determine the real startup path and run the narrowest safe verification available. Record prerequisites, commands, expected results, and blockers.
+2. Determine the real startup path and actually run the project to verify it works (not just read startup scripts). Use the narrowest safe verification: start the service, confirm it responds (HTTP 200 / health endpoint / UI loads), then stop it. Record prerequisites, exact commands, access URL, expected results, and blockers. If the project cannot be run in the current environment, state exactly what is missing and what the user needs to do.
 3. Read the resume when supplied. Extract technologies, responsibilities, project claims, and metrics, then adjust the analysis and questions.
 4. Trace one or two core business flows through concrete files, symbols, data stores, messages, and external calls.
 5. Explain the project in conversational language, from the overall business story to implementation details.
@@ -61,7 +61,7 @@ Never invent personal ownership, production incidents, legacy bugs, performance 
 
 For a project the user wants to learn from scratch, do not dump an overview first. Learn and present the codebase as a guided tour in dependency order, layer by layer:
 
-1. **Entry points first:** find the runnable entry (main class, CLI, entry file, server bootstrap, job scheduler) and the primary request or data path that starts there.
+1. **Entry points first + run it:** find the runnable entry (main class, CLI, entry file, server bootstrap, job scheduler) and the primary request or data path that starts there. Then actually start the project and verify it responds — reading entry code without running it is not enough. Record the startup command, access URL, and any environment prerequisites.
 2. **Layer the architecture:** group components into clear layers such as API/interface, service/domain, data/persistence, and external integrations. Explain what each layer owns and how data moves between layers.
 3. **Tour in dependency order:** explain each layer only after the layer it depends on is understood. Start from what the user can run and observe, then move inward toward storage and external systems.
 4. **Narrow the reading surface:** recommend a short reading order (entry → core service → data model → one important test) instead of asking the user to read the whole tree. State which files matter and which can be skipped.
