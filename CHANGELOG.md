@@ -1,27 +1,47 @@
 # Changelog
 
-本文件记录 `project-interview-coach` 的显著变更。格式遵循 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/)，版本遵循 [Semantic Versioning](https://semver.org/lang/zh-CN/)。
+本项目（project-interview-coach）基于 jennifer88huang/interview-skills（MIT）二次开发。
 
-## [Unreleased]
+## [2.1.0] - 2026-09-16
 
-### Added
+### 🔄 设计修正
+- **阶段推进规则（阶段门控）**：全流程改为**逐阶段一问一答**——每个阶段输出后必须停下等用户确认（可调整/跳过），用户说"继续"才进下一阶段；严禁一口气输出阶段 0-7
+- 阶段 0 前置检查改为逐项询问用户，三项确认后才开工
+- 阶段 1-7 每个阶段补充"输出后停下 / 写入前确认"的门控点
+- **笔记库接入**：SKILL.md 新增可配置素材源——最新版简历、行为题素材、岗位材料（路径可配置，找不到退回用户粘贴输入）；阶段 1 简历默认路径
+- **bei-framework.md 改造**：删除大厂价值观题库（阿里/字节/腾讯/美团）；新增央国企/银行行为题库（15 高频题 + 13 行为题 + 三类核心故事模块，素材来自用户笔记库行为题素材 + 最新版简历）
+- **question-design.md 改造**：删除 Senior AI Chatbot 岗（chatbox 已删）；新增央国企/运营商/银行信息化岗（校招版）10 问框架（稳定性+岗位认知+项目深挖为主，不考算法）；新增央国企校招权重；checklist 加央国企检查项
+- **resume-parser.md 改造**：新增简历来源（skill 自动读笔记库最新版 docx，解压提取文本）；docx 格式支持改为直接解压
+- **interview-output.md 改造**：**阶段 7 输出两份文件**——①`<项目名>-面试作战卡.md`（对齐用户本地笔记库的作战卡格式：项目定位头部 + 钩子对照表 + 30秒/1分钟STAR + 深挖弹药库 + 高频问答）；②`<项目名>-代码与场景题.md`（对齐用户本地笔记库的代码与场景题格式：按核心链路组织，场景×八股 + 考点速记 + 代码实现 + 链路追踪 + 追问应对 + 疑难场景速记）。命名用项目名不用编号
+- **移除 chatbox-senior-ai-chatbot.md**：资深 AI Chatbot 案例（面向资深岗/海外大厂），校招 AI 应用岗用不上；AI 应用岗面试题已由 question-design 的 AI 应用岗题库覆盖
+- 清理原仓库遗留文件（PRD/FAQ/INSTALL/CONTRIBUTING/README-en/docs/ui/assets/extensions/网站文件等），仅保留 skill 本体 + .gitignore
+- 全库中文化（非专有名词英文清零）
 
-- **项目拉取目录偏好**：SKILL.md 新增 Project Location Preference——学习远程项目且未指定路径时，默认克隆到 `D:\计算机项目学习\<repo-name>`（本地偏好，不可移植）。
-- **跨平台兼容**：SKILL.md 增加 `allowed-tools` 字段（Claude Code 识别）；README 改为 Codex / Claude Code / Doubao 三平台安装与用法说明（`agents/openai.yaml` 标注为 Codex 专属，其他平台忽略）。
-- 新增 `references/resume-workflow.md`：简历工作流（有简历→fit 先行评估+优化；无简历→参考模板从项目证据生成）+ 简历验证清单。
-- 新增 `references/upskill.md`：技能差距分析（gap heatmap）→ 八股学习计划（资源 / 顺序 / 时间），衔接已有题库积累。
-- 新增 `references/interview-tips.md`：STAR 素材模板、常见难题、反向提问清单、roleplay 指南、电话/视频面试技巧。
-- 项目学习环节强化：引入入口点识别、分层架构分析、引导式学习（按依赖顺序），并入 `references/project-output.md`。
-- 新增 `README.md`（新定位：通用软件项目学习 + 简历 + 八股 + 模拟面试）与 `LICENSE`（MIT）。
-- `SKILL.md` 增加“简历生成 / 八股计划”两个可选模式，并在 Communication Style 增加反 AI 味硬规则。
-- `agents/openai.yaml` 的默认提示词与新定位同步。
+## [2.0.0] - 2026-09-16
 
-## [0.1.0] - 2026-09-04
+### 🆕 新增
+- **代码证据映射（code-evidence-map.md）**：简历/项目描述每条声明 → 具体代码路径 → 四级证据分级（已核验 / 代码支撑 / 推断 / 未核验），附诚实边界话术与常见陷阱
+- **一问一答模拟协议（mock-interview.md）**：一次一题、答后 1-5 分评估、9 级提问阶梯、弱答只给同深度提示、多轮连贯模拟
+- **面试作战卡输出（interview-output.md）**：30 秒版 / 1 分钟 STAR / 深挖弹药库 / 高频问答 Q&A，默认写入面试作战卡目录
+- **好答案 vs 差答案（star-templates.md）**：双模板结构 + 常见毛病清单 + 反 AI 味硬规则 + 央国企行为题补充
+- **踩坑记录（gotchas.md）**：安装/触发/出题/交互的反模式
 
-### Added
+### 🔄 改造
+- **SKILL.md 重写**：7 阶段主流程（前置检查 → 证据映射 → 匹配度 → 公司风格 → 10 问 → 模拟 → 作战卡）；硬规则五条（证据优先/不编造/一问一答/反AI味/诚实边界）
+- **company-profiles.md 重写**：央国企（税务/金融监管/运营商/央企）、银行科技岗、事业单位画像为主，互联网大厂精简保留
+- **question-design.md**：新增 AI 应用岗（校招版）题库（RAG/向量检索/幻觉治理/Agent 编排/模型选型/评估），新增校招权重规则（项目深挖 > 基础 > 算法）
+- **jd-parser.md**：新增央国企/银行/事业单位隐藏考察点（党员、属地、稳定性、公文、结构化面试）
+- **resume-parser.md**：新增代码映射入口，解析出声明后必须进入 code-evidence-map
 
-- 初始版本：六模式（项目讲解 / 简历重点 / 模拟面试 / 场景题 / 代码追问 / 沉淀文档）。
-- 四级证据分级：Verified / Code-supported / Inferred / Unverified。
-- 9 级项目提问阶梯与一问一答模拟面试协议。
-- 12 节项目学习笔记结构与三档面试作战卡（30 秒 / 1 分钟 STAR / 深挖）。
-- 默认输出目录偏好：`D:\yy的成长记录\30-工作准备\项目\面试作战卡\`。
+### 📦 其他
+- 新增 LICENSE（MIT，保留原仓库版权声明）
+- README 重写为项目面试教练定位
+
+## [1.x] - 原版 interview-skills（jennifer88huang）
+
+- 1.0.0：JD + 简历驱动的专属面试题生成
+- 2026-04-24：HR 面专项训练、薪资谈判话术、多轮完整面试流程
+- 2026-05-28：海外大厂支持（Google / Meta / Amazon / Microsoft）
+- 2026-06-01：install-skill.sh 一键安装
+- 2026-06-04：网页版 Mock Interview UI
+- 2026-07-02：Senior AI Chatbot / LLM App 项目面试案例

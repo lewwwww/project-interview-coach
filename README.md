@@ -1,142 +1,142 @@
-# Project Interview Coach（项目面试教练）
+<div align="center">
 
-一个跨平台的通用软件项目学习 Skill（Codex / Claude Code / Doubao 等均可用）：把任意代码仓库学懂、讲清，并一路带到面试现场。
+# 项目面试教练（Project Interview Coach）
 
-**定位：通用软件项目学习。**
+**代码证据驱动的求职面试训练 Skill**
 
-- 有简历 → 辅助简历（对齐目标岗位，梳理可验证的项目亮点）
-- 无简历 → 参考简历模板，从项目已验证内容生成一份可用的简历
-- 完整链路：**项目学习 → 八股 → 模拟面试**
+面向 **央国企 / 银行 / 事业单位 / AI 应用岗 / 后端校招**：
+输入「已完成项目的代码 + 项目描述/简历 + JD」，产出「证据映射 → 专属 10 问 → 一问一答模拟 → 面试作战卡 + 代码与场景题」。
 
-## 它能做什么
+> 基于 [jennifer88huang/interview-skills](https://github.com/jennifer88huang/interview-skills)（MIT，342★）二次开发，
+> 融合自有 project-interview-coach 的代码证据分级、9 级提问阶梯、反 AI 味规则与面试弹药沉淀。
 
-对任意本地代码仓库（自己写的、课程作业、远程拉下来的开源项目都行）：
+</div>
 
-| 环节 | 能力 |
-|---|---|
-| 项目学习 | 通俗讲解业务与技术、验证运行方式、核心请求流转、分层架构、关键模块入口、选型与设计取舍 |
-| 简历 | 有简历：把简历条目映射到代码证据，标出支持/部分支持/未验证，诚实收窄；无简历：参考模板从项目证据生成简历 |
-| 八股 | 对照目标岗位 JD 或目标方向做技能差距分析，生成 gap heatmap + 学习计划（资源、顺序、时间） |
-| 模拟面试 | 一问一答的递进式模拟面试，9 级提问阶梯，答后给简短评估 + 参考回答 + 下一步 |
-| 沉淀 | 12 节项目学习笔记 + 三档（30 秒 / 1 分钟 STAR / 深挖）面试作战卡 |
+---
 
-## 核心设计原则
+## 它解决什么问题
 
-- **证据优先**：一切结论从仓库代码、配置、测试、运行结果而来，四级证据分级（Verified / Code-supported / Inferred / Unverified）。
-- **不编造**：不虚构个人职责、生产事故、性能数字、设计意图。简历里只放有证据支撑的内容。
-- **一问一答**：模拟面试一次只问一题，答后评估，不让候选人先看到完整答案。
-- **反 AI 味**：讲解和面试话术追求自然、具体、可被打断，不堆砌机械口癖和空洞套话。
+很多面试准备的问题不是"题不够多"，而是：
+
+- **简历/项目描述经不起追问**——说"我做了防超卖"，但被问"并发下会不会超卖"就卡住
+- **题库是通用八股，不是你的项目**——背了一堆框架原理，你的项目细节反而讲不清
+- **央国企/银行和大厂面试逻辑完全不同**——大厂追算法、央国企考稳定性/党员/公文/结构化表达
+- **AI 应用岗没人教**——RAG、Agent 怎么被面试官深挖，没有现成题库
+
+这个 Skill 把"通用准备"变成"**代码证据驱动的定制准备**"。
+
+## 核心流程（7 阶段）
+
+```
+阶段0 前置检查：项目能跑？有项目描述（能放简历的一段话）？简历（可选）
+阶段1 收集输入：目标公司+岗位 + JD + 项目路径 + 项目描述/简历
+阶段2 ★代码证据映射：描述/简历每条声明 → 具体代码路径 → 四级证据分级
+                    （已核验 / 代码支撑 / 推断 / 未核验）
+阶段3 匹配度分析：JD vs 描述/简历 vs 代码证据（三维）
+阶段4 公司风格匹配：央国企/银行/事业单位/大厂画像表
+阶段5 出题 10 问：JD硬技能×3-4 + 项目深挖×3-4（基于证据表）+ 行为×1-2 + 反问×1
+阶段6 模拟面试：一问一答（答→评→追→参考），或好答案vs差答案 / HR面 / 多轮模拟
+阶段7 沉淀：输出两份文件——<项目名>-面试作战卡.md + <项目名>-代码与场景题.md
+```
+
+> 全程**逐阶段一问一答**：每个阶段输出后停下等用户确认（可调整/跳过），不会一口气全输出。
+
+## 功能亮点
+
+- **代码证据映射（护城河）**：简历/描述里每条声明都落到文件/函数/调用链，标四级证据分级——面试深挖的弹药全部从这里来
+- **前置门槛**：项目完整能运行 + 有项目描述即可开练；项目没学懂会引导先学（转 project-learning-coach）
+- **央国企/银行画像**：税务/金融监管/运营商/央企/银行科技岗/事业单位的风格表，替换原版大厂表
+- **AI 应用岗题库**：RAG/向量检索/知识库构建/幻觉治理/提示词/Agent 编排/模型选型/评估迭代
+- **一问一答协议**：一次一题，答后 1-5 分评估 + 一个追问 + 口语化参考；弱答只给同深度提示
+- **双文件沉淀**：面试作战卡（定位/钩子/STAR/深挖弹药库）+ 代码与场景题（核心链路/考点速记/链路追踪/疑难场景）
+- **反 AI 味**：输出像真人，禁"总的来说/这是一个好问题"；不塞背诵台词
+- 保留原版能力：匹配度分析、10 问全套、好答案 vs 差答案、HR 面、谈薪、多轮连贯模拟
 
 ## 安装
 
-这个仓库本身就是完整的 Skill 目录，按你所用 agent 的约定把它放到对应 skills 根目录下即可。三平台均可：
+1. 克隆或下载本仓库
+2. 将整个 `project-interview-coach` 文件夹放入你的 skill 目录：
+   - 豆包 / Doubao：`<用户目录>\AppData\Local\Doubao\User Data\Default\.doubao\agent_mode\workspace\.user_skills\`
+   - 其他支持 Skill 的平台：按其文档放到对应 skills 目录（复制 `SKILL.md` + `references/` 即可）
+3. **改完必须新开一个会话**再使用（skill 在会话启动时加载）
 
-### Codex
+## 快速开始
 
-Windows（PowerShell）：
-
-```powershell
-git clone https://github.com/lewwwww/project-interview-coach.git "$env:USERPROFILE\.codex\skills\project-interview-coach"
+```text
+用 project-interview-coach 这个 skill，帮我准备面试：
+- 目标公司/岗位：<公司 · 岗位>
+- JD：<粘贴 JD 全文或链接>
+- 项目：<项目名>
+- 项目代码路径：<本地代码路径>
 ```
 
-macOS / Linux：
-
-```bash
-git clone https://github.com/lewwwww/project-interview-coach.git ~/.codex/skills/project-interview-coach
+```text
+帮我准备税务局信息中心的面试，我的项目是 <项目名>，代码在 <路径>
 ```
 
-装好后**新开一个 Codex 任务**才会生效。
-
-### Claude Code
-
-```bash
-git clone https://github.com/lewwwww/project-interview-coach.git ~/.claude/skills/project-interview-coach
+```text
+模拟银行科技岗面试，从证据映射开始，把我项目描述里每条声明都落到代码上
 ```
 
-Claude Code 通过 `SKILL.md` 的 `name` / `description` / `allowed-tools` 字段自动识别本 Skill。安装后新开会话即可被上下文感知触发。
-
-### Doubao（豆包）
-
-Windows（PowerShell）：
-
-```powershell
-git clone https://github.com/lewwwww/project-interview-coach.git "$env:LOCALAPPDATA\Doubao\User Data\Profile 1\.doubao\agent_mode\workspace\.skills\project-interview-coach"
+```text
+面完一轮了，帮我把这个项目的面试作战卡和代码与场景题沉淀出来
 ```
 
-macOS / Linux：
+## 笔记库配置（可选，灵活处理）
 
-```bash
-git clone https://github.com/lewwwww/project-interview-coach.git ~/Library/Application\ Support/Doubao/.../.doubao/agent_mode/workspace/.skills/project-interview-coach
-```
+本 skill 支持从使用者的**本地笔记库**读取素材——简历、行为题素材、岗位材料——**每次使用时实时读取最新内容**，不是静态拷贝：
 
-> Doubao 的 skills 根目录以你当前 Profile 的实际路径为准，把仓库克隆到该目录下即可；装好后新开会话生效。
+- 默认按 `SKILL.md` 中的 `<你的笔记库>` 占位路径查找（投递策略/简历、求职复盘/行为题素材等）
+- **把 `<你的笔记库>` 替换成你自己的笔记库根目录即可**
+- **没有笔记库也能用**：对话中直接粘贴简历 + JD + 项目描述，skill 一样完整工作
+- 找不到路径时自动退回"用户粘贴输入"模式，不会硬编码报错
 
-### 其他遵循 SKILL.md 标准的 agent
+> 设计说明：仓库版是脱敏通用版，不含任何个人数据；素材全部在运行时从使用者自己的笔记库/对话输入读取。你可以在笔记库里放自己的简历与行为题素材，skill 会读取它们并用于出题。
 
-Cline、Gemini CLI、Roo Code 等同样读取 `SKILL.md` 的 frontmatter（`name` + `description`），把本仓库放到各自的 skills 目录即可，无需改文件。
+## 支持公司 / 场景
 
-## 用法
+| 类别 | 覆盖 |
+|---|---|
+| 央国企 | 税务/金融监管（国考）、运营商、央企（能源/粮食/电网类） |
+| 银行 | 总行/省分科技岗、城商行 |
+| 事业单位 | 高校/科研/政务信息化 |
+| 互联网大厂 | 阿里/腾讯/字节/百度/美团/京东等（精简表） |
+| 岗位 | 后端（Java/Spring）、AI 应用（RAG/Agent/Dify）、数据、前端 |
 
-各平台触发方式：
+不在列表的公司：按 JD 自动推断面试风格。
 
-- **Codex：** 用 `$project-interview-coach` 前缀显式调用，或直接说下面这些自然语言指令（`agents/openai.yaml` 已开自动触发）。
-- **Claude Code：** 直接说自然语言指令，Skill 按描述上下文感知自动激活；也可在提示中显式点名 `project-interview-coach`。
-- **Doubao：** 直接说自然语言指令，按 Skill 描述自动匹配激活。
-
-通用自然语言示例：
-
-```
-使用 project-interview-coach 详细、通俗地分析当前项目，验证运行方式，并结合我的简历进行面试准备。
-```
-
-或者更简单的一句：
-
-```
-帮我学习这个项目并进行模拟面试。
-```
-
-常用指令示例：
-
-- `帮我学这个项目，输出一份项目学习笔记` —— 沉淀 12 节项目学习笔记
-- `我没有简历，帮我按这个项目生成一份简历` —— 走简历生成流程（参考模板）
-- `这是我的简历和一份 Java 后端 JD，帮我对齐评估` —— 走 fit 先行 + 简历优化流程
-- `针对这个岗位做技能差距分析，给我一份学习计划` —— 走八股 / upskill 流程
-- `开始模拟面试，从项目背景问起` —— 一问一答模拟面试
-
-## 目录结构
+## Skill 架构
 
 ```
 project-interview-coach/
-├── SKILL.md                          # Skill 主定义：模式选择、证据分级、分析方法（跨平台核心）
-├── agents/
-│   └── openai.yaml                   # Codex 专属 Agent 配置（显示名、自动触发）；其他平台自动忽略
+├── SKILL.md                    # 主入口（7 阶段流程 + 前置检查 + 硬规则）
 ├── references/
-│   ├── project-output.md             # 12 节项目学习笔记结构 + 面试作战卡
-│   ├── interview-method.md           # 简历证据映射 + 9 级提问阶梯 + 一问一答协议
-│   ├── resume-workflow.md            # 简历生成 / 简历辅助工作流 + 验证清单
-│   ├── upskill.md                    # 技能差距分析 + 学习计划（八股）
-│   └── interview-tips.md             # STAR 素材、常见难题、反问、roleplay
-├── README.md
-├── CHANGELOG.md
-└── LICENSE
+│   ├── code-evidence-map.md    # 🆕 证据映射流程与四级分级
+│   ├── jd-parser.md            # JD 解析（+央国企隐藏考察点）
+│   ├── resume-parser.md        # 描述/简历解析（+代码映射入口）
+│   ├── company-profiles.md     # 🔄 央国企/银行/事业单位/大厂画像
+│   ├── question-design.md      # 10 问框架（+AI应用岗题库+校招权重）
+│   ├── bei-framework.md        # BEI/STAR 行为面试
+│   ├── star-templates.md       # 🆕 好答案 vs 差答案（+反AI味）
+│   ├── mock-interview.md       # 🆕 一问一答协议 + 9级阶梯 + 评分
+│   ├── interview-output.md     # 🆕 双文件输出模板（作战卡+代码与场景题）
+│   ├── github-similar-repos-research.md  # 原版翻译：竞品调研
+│   └── gotchas.md              # 🆕 踩坑记录
+├── LICENSE                     # MIT（含原仓库版权声明）
+├── CHANGELOG.md                # 版本记录
+└── README.md                   # 本文档
 ```
 
-## 借鉴与致谢
+## 致谢
 
-本 Skill 在自研方法论基础上，吸收了一批优秀开源项目的成熟设计，特此致谢：
+- **[jennifer88huang/interview-skills](https://github.com/jennifer88huang/interview-skills)**（MIT，342★）：JD/简历解析、10 问设计、公司画像、HR 面/谈薪/多轮模拟的完整底座
+- **understand-anything / interview-response-coach 等**：行为面试与应答训练思路参考
+- **lewwwww/project-interview-coach（自有项目）**：证据分级、9 级提问阶梯、反 AI 味、双文件沉淀设计的来源
 
-- [MadsLorentzen/ai-job-search](https://github.com/MadsLorentzen/ai-job-search)（MIT）——候选人档案、fit 先行评估、简历验证清单、STAR / roleplay 面试准备、upskill 技能差距→学习计划
-- [Egonex-AI/Understand-Anything](https://github.com/Egonex-AI/Understand-Anything)（MIT）——入口点识别、分层架构分析、引导式学习（按依赖顺序 tour）
-- [0x68616F4C/real-interview](https://github.com/0x68616F4C/real-interview)（MIT）——评分复盘与反 AI 味硬规则
-- [f12336414-ship-it/project-interview-extractor](https://github.com/f12336414-ship-it/project-interview-extractor)（Apache-2.0）——项目专属题库银行思路
+## 更新计划
 
-## 注意事项
-
-- Skill 不会自动修改项目 README，除非你明确指定。
-- 简历与面试细节默认保存在外部作战卡目录，不会写入项目仓库。
-- 对于无法从代码证实的说法，会明确标注为待确认（`Unverified`），不会替你编造。
-- 修改本 Skill 后需**新开会话/任务**才会生效（各平台都在启动时读取 Skill 目录）。
-
-## License
-
-[MIT](LICENSE)
+- [x] v2.0.0：代码证据映射 + 央国企画像 + AI 应用岗题库 + 一问一答 + 双文件沉淀
+- [x] v2.1.0：逐阶段一问一答（阶段门控）+ 笔记库可配置接入 + 央国企/银行题库
+- [ ] 各央国企/银行真题库沉淀
+- [ ] 与 project-learning-coach（Skill A）联动测试
+- [ ] 简历薄弱点 → 学习计划自动生成

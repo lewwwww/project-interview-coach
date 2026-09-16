@@ -1,6 +1,11 @@
 MIT License
 
-Copyright (c) 2026 lewwwww
+Copyright (c) 2026 jennifer88huang（interview-skills 原仓库作者）
+Copyright (c) 2026 lewwwww（本项目二次开发）
+
+本项目（project-interview-coach）基于 jennifer88huang/interview-skills（MIT License）二次开发，
+在原能力（JD/简历解析、10 问出题、公司画像、HR 面、谈薪、多轮模拟）之上，
+新增代码证据映射、央国企/银行/事业单位画像、AI 应用岗题库、一问一答模拟协议、面试作战卡沉淀。
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
